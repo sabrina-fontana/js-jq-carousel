@@ -4,9 +4,12 @@ function slideLeft() {
   if ($('img.first').hasClass('active')) {
     $('img.first').removeClass('active');
     $('img.last').addClass('active');
+    $('.fa-circle.first').removeClass('active');
+    $('.fa-circle.last').addClass('active');
     // altrimenti vai a quella precedente
   } else {
    $('img.active').removeClass('active').prev().addClass('active');
+   $('.fa-circle.active').removeClass('active').prev().addClass('active');
  }
 }
 
@@ -15,10 +18,22 @@ function slideRight() {
   if ($('img.last').hasClass('active')) {
     $('img.last').removeClass('active');
     $('img.first').addClass('active');
+    $('.fa-circle.last').removeClass('active');
+    $('.fa-circle.first').addClass('active');
   // atrimenti vai a quella successiva
   } else {
    $('img.active').removeClass('active').next().addClass('active');
+   $('.fa-circle.active').removeClass('active').next().addClass('active');
  }
+}
+
+function clickDot(x) {
+  $('.fa-circle').eq(x).click(function() {
+    $('.fa-circle').removeClass('active');
+    $('.fa-circle').eq(x).addClass('active');
+    $('img').removeClass('active');
+    $('img').eq(x).addClass('active');
+  });
 }
 
 // <- clicco sulla freccia a sinistra (torno indietro)
@@ -42,22 +57,10 @@ $(document).keydown(function(k) {
 });
 
 // BONUS Cliccare sui pallini per mostrare l’immagine corrispondente
-$('.fa-circle').eq(0).click(function() {
-  $('img').removeClass('active');
-  $('img').eq(0).addClass('active');
-});
+clickDot(0);
 
-$('.fa-circle').eq(1).click(function() {
-  $('img').removeClass('active');
-  $('img').eq(1).addClass('active');
-});
+clickDot(1);
 
-$('.fa-circle').eq(2).click(function() {
-  $('img').removeClass('active');
-  $('img').eq(2).addClass('active');
-});
+clickDot(2);
 
-$('.fa-circle').eq(3).click(function() {
-  $('img').removeClass('active');
-  $('img').eq(3).addClass('active');
-});
+clickDot(3);
