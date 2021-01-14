@@ -57,10 +57,6 @@ $(document).keydown(function(k) {
 });
 
 // BONUS Cliccare sui pallini per mostrare l’immagine corrispondente
-clickDot(0);
-
-clickDot(1);
-
-clickDot(2);
-
-clickDot(3);
+for (var d = 0; d < 4; d++) {
+  clickDot(d);
+}
